@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="confirmUpdateDialog" class="okay">更新</button>
+</body>
+
+<script>
+    // 错误的版本
+    let okay = document.querySelector("#confirmUpdateDialog button.okay"); // 返回null
+
+    okay.addEventListener('click', applyUpdate);
+
+    function applyUpdate() {
+        alert('applyUpdate...');
+    }
+</script>
+
+</html>

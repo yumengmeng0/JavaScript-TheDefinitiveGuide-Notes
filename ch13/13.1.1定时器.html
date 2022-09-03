@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13.1.1定时器</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 1000ms后调用checkForUpdates
+    let updateTimeoutId = setTimeout(checkForUpdates, 1000);
+    // 清除定时器
+    // clearTimeout(updateTimeoutId);
+    // 500ms后调用checkForUpdates每过500ms调用一次
+    let updateIntervalId = setInterval(checkForUpdates, 500);
+    // stopCheckingForUpdates();
+
+    function checkForUpdates() {
+        console.log("checkForUpdates...");
+    }
+
+    function stopCheckingForUpdates() {
+        clearInterval(updateIntervalId);
+    }   
+</script>
+
+</html>

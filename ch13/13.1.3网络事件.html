@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>template</title>
+</head>
+
+<body>
+<button onclick="getCurrentVersionNumber(versionCallback)">获取当前版本</button>
+</body>
+<script>
+    function getCurrentVersionNumber(versionCallback) {
+        console.log(versionCallback);
+        let request = new XMLHttpRequest();
+        request.open("GET", "http://localhost:8080/server/api/version");
+        request.send();
+
+        // 注册一个将在响应到达时调用的回调
+        request.onload = function () {
+            if (request.status === 200) {
+                let currentVersion = parseFloat(request.responseText);
+                versionCallback(null, currentVersion);
+            } else {
+                versionCallback(request.statusText, null);
+            }
+        }
+
+        // 注册另一个将在网络出错时调用的回调
+        request.onerror = request.ontimeout = function (e) {
+            versionCallback(e.type, null)
+        }
+    }
+
+    function versionCallback(status, version) {
+        alert("status:" + status + ", current version：" + version);
+    }
+</script>
+
+</html>
