@@ -2,10 +2,11 @@
 
 const http = require("http");
 
+// 返回值是一个期约
 function getJSON(url) {
+    // 创建并返回一个新的期约
     return new Promise(((resolve, reject) => {
         let request = http.get(url, response => {
-
             if (response.statusCode !== 200) { // 状态码不对，拒绝期约
                 reject(new Error(`HTTP status ${response.statusCode}`));
                 response.resume(); // 防止内存泄露
@@ -21,8 +22,9 @@ function getJSON(url) {
                 response.on("end", () => {
                     try {
                         let parsed = JSON.parse(body);
-                        // 解析成功兑现期约
-                        resolve(parsed);
+                        // 解析成功，兑现期约
+                        resolve(parsed); // 返回的是parsed
+                        console.log(parsed);
                     } catch (e) {
                         // 解析失败，拒绝期约
                         reject(e);
@@ -37,4 +39,5 @@ function getJSON(url) {
     }));
 }
 
-getJSON("http://127.0.0.1:8888/api/user/profile")
+let json = getJSON("http://127.0.0.1:8888/api/user/profile").then(json => json);
+console.log(json); // Promise { <pending> }

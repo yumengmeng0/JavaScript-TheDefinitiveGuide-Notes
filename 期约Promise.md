@@ -1,0 +1,1 @@
+[期约定义的文件](./js/lib.es2015.promise.d.ts)
