@@ -228,8 +228,6 @@ async函数本质上等于期约的。
     }
 ```
 
-
-
 # NOTES
 ## [1. 获取有返回值的 Promise 的返回值（以Axios为例）](nodejs/promise/promise.js)
 
